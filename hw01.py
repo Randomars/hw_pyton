@@ -100,4 +100,4 @@
 #             print("Введите ЦЕЛОЕ число ещё раз.")
 
 # numberOne = enterInt()
-# print(numberOne)
+# print(numberOne, end="/n")
