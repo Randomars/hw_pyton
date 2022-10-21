@@ -1,103 +1,80 @@
-# Добавлена работа над ошибками
+# 1. Сумма цифр вещественного числа
 
-# 1. День недели.
+# numbers = ('0','1','2','3','4','5','6','7','8','9')
 
-# Можно добавить проверку коректности ввода.
-
-# a = int(input("Введите день недели:"))
-# if a == 6 or a == 7:
-#     print("Выходной день.")
-# else:
-#     print("Рабочий день.")
-    
-
-# 2. Проверка истинности.
-
-# Операторные скобки расставлены неверно
-# Нужно перебрать все значения
-
-# for x in [True,False]:
-#     for y in [True,False]:
-#         for z in [True,False]:
-#             if not (x or y or z) == (not y and not y and not z):
-#                 print("Верно!")   
-#             else:
-#                 print("Неверно.")
-#                 break # работает некорректно
-               
-# else:
-#     print("Все решения проверены.")
+# a = str(input("Введите вещественное число:"))
+# summ = 0
+# for i in a:
+#     if i in numbers:
+#         summ = summ + int(i)
+# print(f'Сумма цифр числа: {summ}')
 
 
-# 3. Определение четверти
+# 2. Произведения  N
 
-# x = int(input("Введите X:"))
-# y = int(input("Введите Y:"))
+# Вариант 1.
 
-# if x == 0 and y == 0:
-#     print("Начало координат.")
-# elif x == 0:
-#     print("Точка на оси У.")
-# elif y == 0:
-#     print("Точка на оси Х.")
-# elif x > 0 and y > 0:
-#     print("Четверть 1.")
-# elif x < 0 and y > 0:
-#     print("Четверть 2.")
-# elif x < 0 and y < 0:
-#     print("Четверть 3.")
-# elif x > 0 and y < 0:
-#     print("Четверть 4.")
+# a = int(input("Введите число:"))
 
-# 4. Определение координат.
-
-# a = int(input("Введите номер четверти (от 1 до 4):"))
-
-# if a == 1:
-#     print("x > 0, y > 0")
-# elif a == 2:
-#     print("x < 0, y > 0")
-# elif a == 3:
-#     print("x < 0, y < 0")
-# elif a == 4:
-#     print("x > 0, y < 0")
-# else:
-#     print("Неправильное число (от 1 до 4)")
-
-# 5. Расстояние между точками.
-
-# pAX = int(input("Введите координату X для точки A:"))
-# pAY = int(input("Введите координату Y для точки A:"))
-# pBX = int(input("Введите координату X для точки B:"))
-# pBY = int(input("Введите координату Y для точки B:"))
-
-# pointA = input("Введите х и у через пробел").split(" ")
-# pointB = input("Введите х и у через пробел").split(" ")
-
-# print(pointA)
-# print(pointB)
+# produkt = []
+# for i in range(a):
+#     bitProd = 1
+#     for j in range(i):
+#         bitProd *= j+2
+#     produkt.append(bitProd)
+# print(f'Произведение чисел до N: {produkt}')
 
 
-# print(pow(pow(pBX-pAX,2)+pow(pBY-pAY,2),1/2))
+# Вариант 2.
+
+# a = int(input("Введите число:"))
+
+# strProdukt = []
+# for i in range(a):
+#     bitProd = '1'
+#     for j in range(i):
+#         bitProd = bitProd + '*' + str(j+2)
+#     strProdukt.append(bitProd)
+# print(f'Набор произведений числа N: {strProdukt}')
 
 
+# 3. Последовательность (1+1/n)^n
 
 
-# 6. Доп. задание. Кратно ли число 5 и 10 или 15, но не 30.
+# def fillRow(number):
+#     myOrder = []
+#     for i in range(number):
+#         myOrder.append(pow(1+1/(i+1), i+1))
+#     return myOrder
 
-# if (n%5 == 0  and n%10 == 0) or n%15 == 0 and n%30 != 0 
+# def sumRow(strRow):
+#     res = 0
+#     for i in range(len(strRow)):
+#         res += strRow[i]
+#     return res
 
-# 7. Проверка корректности ввода.
+# a = int(input("Введите число:"))
+# myRow = fillRow(a)
+# print(f'Последовательность:\n{myRow}')
+# print(f'Сумма последовательности:\n{sumRow(myRow)}')
 
 
-# def enterInt():
-#     while True:
-#         try:
-#             number = int(input("Введите целое число:"))
-#             return number
-#             # break
-#         except:
-#             print("Введите ЦЕЛОЕ число ещё раз.")
+# 4. Перемешивание списка
 
-# numberOne = enterInt()
-# print(numberOne, end="/n")
+from random import randint
+
+
+listOne = ['1', '2', '3', '4']
+
+listTwo = listOne
+
+print(listTwo)
+for i in range(10):
+    a = randint(0,len(listTwo)-1)
+    b = randint(0,len(listTwo)-1)
+    temp = listTwo[a]
+    listTwo[a] = listTwo[b]
+    listTwo[b] = temp
+print(listTwo)
+
+
