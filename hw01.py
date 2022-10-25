@@ -1,80 +1,82 @@
-# 1. Сумма цифр вещественного числа
+# 1. Сумма нечетных элементов
 
-# numbers = ('0','1','2','3','4','5','6','7','8','9')
+# numbers = ['2','3','5','9','3']
 
-# a = str(input("Введите вещественное число:"))
 # summ = 0
-# for i in a:
-#     if i in numbers:
-#         summ = summ + int(i)
-# print(f'Сумма цифр числа: {summ}')
+# for i in range(1,len(numbers),2):
+#     summ += int(numbers[i])
+# print(f'Исходные числа:{numbers}')
+# print(f'Сумма нечетных элементов: {summ}')
 
 
-# 2. Произведения  N
+# 2. Произведения  пар
 
-# Вариант 1.
+# numbers = ['2','3','4','5','6']
 
-# a = int(input("Введите число:"))
-
+# i = 0
 # produkt = []
-# for i in range(a):
-#     bitProd = 1
-#     for j in range(i):
-#         bitProd *= j+2
-#     produkt.append(bitProd)
-# print(f'Произведение чисел до N: {produkt}')
+
+# while i < len(numbers)/2:
+#     produkt.append(int(numbers[i])*int(numbers[len(numbers)-i-1]))
+#     i += 1
+# print(f'Исходные числа:{numbers}')
+# print(f'Произведение пар чисел: {produkt}')
 
 
-# Вариант 2.
+# 3. Разница дробных частей
 
-# a = int(input("Введите число:"))
+# numbers = [1.1, 1.2, 3.1, 5, 10.01]
 
-# strProdukt = []
-# for i in range(a):
-#     bitProd = '1'
-#     for j in range(i):
-#         bitProd = bitProd + '*' + str(j+2)
-#     strProdukt.append(bitProd)
-# print(f'Набор произведений числа N: {strProdukt}')
+# minFrac:float = 0
+# maxFrac:float = 0
 
+# for i in numbers:
+#     if i % 1 > 0:
+#         minFrac = i % 1
+#         maxFrac = i % 1
+#         break
 
-# 3. Последовательность (1+1/n)^n
+# for i in numbers:
+#     if i % 1 > 0:
+#         if i % 1 < minFrac:
+#             minFrac = i % 1
+#         if i % 1 > maxFrac:
+#             maxFrac = i % 1
 
-
-# def fillRow(number):
-#     myOrder = []
-#     for i in range(number):
-#         myOrder.append(pow(1+1/(i+1), i+1))
-#     return myOrder
-
-# def sumRow(strRow):
-#     res = 0
-#     for i in range(len(strRow)):
-#         res += strRow[i]
-#     return res
-
-# a = int(input("Введите число:"))
-# myRow = fillRow(a)
-# print(f'Последовательность:\n{myRow}')
-# print(f'Сумма последовательности:\n{sumRow(myRow)}')
+# print(f'Исходные числа:{numbers}')
+# print(f'Разница между значениями дробных частей: {maxFrac - minFrac}')
 
 
-# 4. Перемешивание списка
+# 4. Преобразование в двоичное число.
 
-from random import randint
+# a = int(input("Введите число: "))
+# binaryRes = ''
+
+# while a / 2 > 0:
+#     if a%2 == 0:
+#         binaryRes = '0' + binaryRes
+#     else:
+#         binaryRes = '1' + binaryRes
+#     a = int(a/2)
+
+# print('Это число в двоичной системе: ' + binaryRes)
 
 
-listOne = ['1', '2', '3', '4']
+# 5. Список чисел Фибоначчи
 
-listTwo = listOne
+def Fibonacci(n: int):
+    if (n == 1) or (n == 2):
+        return 1
+    else:
+        if n > 0:
+            return Fibonacci(n - 1) + Fibonacci(n - 2)
+        else:
+            return Fibonacci(n + 2) - Fibonacci(n + 1)
 
-print(listTwo)
-for i in range(10):
-    a = randint(0,len(listTwo)-1)
-    b = randint(0,len(listTwo)-1)
-    temp = listTwo[a]
-    listTwo[a] = listTwo[b]
-    listTwo[b] = temp
-print(listTwo)
+a = int(input("Введите значение индекса: "))
+rowFibonacci = []
+for i in range(-a,a+1):
+    rowFibonacci.append(Fibonacci(i))
 
+print(rowFibonacci)
 
