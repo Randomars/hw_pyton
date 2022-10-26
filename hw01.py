@@ -46,6 +46,14 @@
 # print(f'Исходные числа:{numbers}')
 # print(f'Разница между значениями дробных частей: {maxFrac - minFrac}')
 
+# -= remark =-
+
+# from decimal import Decimal # Для более точного написания чисел с плавающей точкой.
+
+# print(max(numbers) - min(numbers))  # Более легкий способ выделить мин и макс из списка.
+# num = Decimal('5.42')
+# print(num)
+
 
 # 4. Преобразование в двоичное число.
 
@@ -64,19 +72,31 @@
 
 # 5. Список чисел Фибоначчи
 
-def Fibonacci(n: int):
-    if (n == 1) or (n == 2):
-        return 1
-    else:
-        if n > 0:
-            return Fibonacci(n - 1) + Fibonacci(n - 2)
-        else:
-            return Fibonacci(n + 2) - Fibonacci(n + 1)
+# Вариант 1
 
-a = int(input("Введите значение индекса: "))
-rowFibonacci = []
-for i in range(-a,a+1):
-    rowFibonacci.append(Fibonacci(i))
+# def Fibonacci(n: int):
+#     if (n == 1) or (n == 2):
+#         return 1
+#     else:
+#         if n > 0:
+#             return Fibonacci(n - 1) + Fibonacci(n - 2)
+#         else:
+#             return Fibonacci(n + 2) - Fibonacci(n + 1)
 
-print(rowFibonacci)
+# a = int(input("Введите значение индекса: "))
+# rowFibonacci = []
+# for i in range(-a,a+1):
+#     rowFibonacci.append(Fibonacci(i))
 
+# print(rowFibonacci)
+
+# # Вариант 2
+
+# a = int(input("Введите значение индекса: "))
+# rF = [1, 0, 1]
+
+# for i in range(2, a + 1):
+#     rF.append(rF[len(rF)-1] + rF[len(rF)-2])
+#     rF.insert(0, rF[1] - rF[0])
+
+# print(rF)
