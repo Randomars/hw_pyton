@@ -76,44 +76,55 @@
 text1 = 'aaaaaaabbbbbbcccccccccd'
 text2 = '11a3b7c1d'
 
-def ToFile(strng: str):
-    print(strng)
+def ToFile(file: str, strng: str):
+    with open(file, 'w') as data:
+        data.write(strng)
+
 
 def FromFile(strng: str):
-    return strng
+    with open(file, 'r') as data:
+        return data.readline()
+
 
 def compact(strng: str):
-    newStrng = []
-    for i in range(len(strng)):
-        newStrng.append(strng[i])
-    # for i in newStrng:
-    #     if i.index()+1 <= len(newStrng):
-    #         if (i != newStrng[i.index()+1]):
-    #             newStrng.insert(i.index(),' ')
-
-    
-    # i = 0
-    # while i < len(newStrng):
-    #     i += 1
-    #     if (newStrng[i] != newStrng[i-1]) and (newStrng[i-1] != ' '):
-    #         newStrng.insert(i,' ')
-    #         print(newStrng)
-            
-    # Фрагмент ниже выдает неожиданные данные. Хотя и сам цикл не идеален            
-    # ni = ''
-    # counti = 0
-    # for i in range(len(strng)):
-    #     print(i, strng[i], newStrng)
-    #     if (strng[i] != ni) and (counti != 0):
-    #         newStrng += str(counti) + ni
-    #         counti = 0
-    #         ni = strng[i]
-    #         # print(newStrng)
-    #     counti += 1
+    strng = strng + ' '
+    newStrng = ''
+    while strng != ' ':
+        pChar = strng[0]
+        i = 1
+        tempStr = ''
+        while (pChar == strng[i]):
+            i += 1
+        tempStr = strng[:i]
+        ni = tempStr.count(tempStr[0])
+        newStrng += str(ni) + tempStr[0]
+        strng = strng[i:]
     return newStrng
 
-myStr = FromFile(text1)
+def decompress(strng: str):
+    newStrng = ''
+    newList = []
+    i = 0
+    while i < len(strng):
+        if i > 0:
+            if strng[i].isdigit != strng[i-1].isdigit:
+                newStrng += ' '
+        newStrng += strng[i]
+        i += 1
+    newList = newStrng.split()
+    newStrng = ''
+    for i in range(0, len(newList)-1, 2):
+        newStrng += newList[i+1]*int(newList[i])
+    return newStrng
+        
+
+file1 = 'textin.txt'
+file2 = 'textout.txt'
+
+myStr = text1
 myStr = compact(myStr)
-ToFile(myStr)
+ToFile(file2, myStr)
+myStr = decompress(myStr)
+ToFile(file1, myStr)
 
 
